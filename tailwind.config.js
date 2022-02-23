@@ -11,5 +11,5 @@ module.exports = {
   variants: {
     extend: {animation: ["motion-safe"]},
   },
-  plugins: [require("tailwind-scrollbar")],
+  // plugins: [require("tailwind-scrollbar")],
 }

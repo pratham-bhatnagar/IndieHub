@@ -1,3 +1,4 @@
+import { AudioPlayer } from "./AudioPlayer";
 export default function Hero() {
   return (
     <div className="relative z-0">
@@ -34,7 +35,7 @@ export default function Hero() {
             <img src="/Stats.svg" className="mt-[6vh]" />
           </div>
           <div>
-            <p>CONTENT</p>
+            <AudioPlayer />
           </div>
         </div>
       </div>
