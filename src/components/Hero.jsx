@@ -6,7 +6,7 @@ export default function Hero() {
         <img src="/Ellipse 1.svg" className="w-[100vw] h-[100vh]" />
       </div>
       <div className="absolute inset-0 flex z-10">
-        <div className="grid grid-cols-2 text-white mx-[5vw] mt-[20vh] ">
+        <div className="grid grid-cols-2 text-white mx-[5vw] mt-[10vh] ">
           <Fade bottom>
             <div>
               <p className="text-[3.5rem] font-Roboto">

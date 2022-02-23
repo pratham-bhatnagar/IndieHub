@@ -6,6 +6,7 @@ import Faq from "./components/Faq";
 import React from "react";
 import MusicPlayer from "./components/MusicPlayer";
 import ScrollAnimation from "react-animate-on-scroll";
+import Navbar from "./components/Navbar";
 
 // import ReactJkMusicPlayer from 'react-jinke-music-player'
 // import 'react-jinke-music-player/assets/index.css'
@@ -14,6 +15,9 @@ function App() {
   return (
     <div className="bg-[#10061E] h-[100vh] overflow-x-hidden scrollbar-thin scrollbar-thumb-scrollCol overflow-y-scroll">
       <div className="">
+        <div className="absolute top-0">
+          <Navbar />
+        </div>
         <Hero />
         <AboutUS />
         <TopPlaylists />
