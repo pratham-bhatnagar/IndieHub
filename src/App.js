@@ -4,6 +4,7 @@ import AboutUS from './components/AboutUs';
 import TopPlaylists from './components/TopPlaylists';
 import Faq from './components/Faq';
 import React from 'react'
+import MusicPlayer from "./components/MusicPlayer";
 // import ReactJkMusicPlayer from 'react-jinke-music-player'
 // import 'react-jinke-music-player/assets/index.css'
 
@@ -15,6 +16,7 @@ function App() {
       <AboutUS/>
       <TopPlaylists/>
       <Faq/>
+      <div className="absolute bottom-0 w-[95vw]"><MusicPlayer /></div>
       {/* <ReactJkMusicPlayer glassBg={true} showDownload={false} showThemeSwitch={false} defaultPlayMode="order"  /> */}
       </div>
     </div>
