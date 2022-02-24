@@ -7,6 +7,7 @@ import React from "react";
 import MusicPlayer from "./components/MusicPlayer";
 import ScrollAnimation from "react-animate-on-scroll";
 import Navbar from "./components/Navbar";
+import MainContainer from "./components/MainContainer";
 
 // import ReactJkMusicPlayer from 'react-jinke-music-player'
 // import 'react-jinke-music-player/assets/index.css'
@@ -14,11 +15,12 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <div className="bg-[#10061E] h-[100vh] overflow-x-hidden scrollbar-thin scrollbar-thumb-scrollCol overflow-y-scroll">
+      <div className="absolute top-0 z-50">
+        <Navbar />
+      </div>
       <div className="">
-        <div className="absolute top-0">
-          <Navbar />
-        </div>
         <Hero />
+        {/* <MainContainer /> */}
         <AboutUS />
         <TopPlaylists />
         <Faq />
