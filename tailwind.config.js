@@ -3,7 +3,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {      
+    scrollCol:'#FF828B',
+    scrollBack:'#1D1A1A'},
   },
-  plugins: [],
+  variants: {
+    extend: {animation: ["motion-safe"]},
+  },
+  plugins: [require("tailwind-scrollbar")],
 }
