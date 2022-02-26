@@ -10,13 +10,16 @@ export default function AboutUS() {
           <div className="flex">
             <img src="/aboutus.svg" className="" />
             <p className="mt-[10vh] w-[50vw] text-right text-2xl ml-[14vw]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              IndieHUB creates a fully decentralised platform for Indie
+              musicians, where they can upload their own albums and songs
+              without needing of a mediator. The whole process is done by the
+              singer itself, with the help of IPFS. IPFS atores the song in a
+              P2P network and secures it with a Hash which proves it
+              authenticity.Wth the implememtation of IPFS our platform also
+              allows artists to release their limited albums/songs and can sell
+              those as NFTs.The platform also allows fans to support their
+              favourite artists through tips as preffered by the singer or you
+              can even support them with the amount you wish to
             </p>
           </div>
         </div>

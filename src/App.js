@@ -1,7 +1,7 @@
 import "./App.css";
 import Hero from "./components/Hero";
 import AboutUS from "./components/AboutUs";
-import TopPlaylists from "./components/TopPlaylists";
+import TopPlaylists from "./components/TopArtists";
 import Faq from "./components/Faq";
 import React from "react";
 import Navbar from "./components/Navbar";
@@ -26,9 +26,6 @@ function App() {
         <div className="absolute bg-[#ffffff41]  bottom-0 w-[100vw] js-show-on-scroll h-[13vh] overflow-y-hidden">
           <SingleMusicPlayer />
         </div>
-        <br />
-        <br />
-        {/* <ReactJkMusicPlayer glassBg={true} showDownload={false} showThemeSwitch={false} defaultPlayMode="order"  /> */}
       </div>
     </div>
   );
