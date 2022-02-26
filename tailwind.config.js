@@ -1,9 +1,14 @@
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      scrollCol: "#FF828B",
+      scrollBack: "#1D1A1A",
+    },
+    fontFamily: { Roboto: ["Roboto", "sans-serif"] },
   },
-  plugins: [],
-}
+  variants: {
+    extend: { animation: ["motion-safe"] },
+  },
+  plugins: [require("tailwind-scrollbar")],
+};
