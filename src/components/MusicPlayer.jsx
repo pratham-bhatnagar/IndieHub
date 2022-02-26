@@ -2,9 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
 import { BsFillVolumeUpFill } from "react-icons/bs";
 import { FaStepForward, FaStepBackward, FaPlay, FaPause } from "react-icons/fa";
+import { Songs } from "./Songs";
 
 function MusicPlayer({ song, imgSrc, auto }) {
-  const [isLove, setLove] = useState(false);
+  const [number, setNumber] = useState(1);
+  const [allSongs, setAllSongs] = useState(Songs);
+  const [nextSong, setNextSong] = useState("");
   const [isPlaying, setPlay] = useState(false);
   //   duration state
   const [duration, setDuration] = useState(0);
@@ -64,8 +67,23 @@ function MusicPlayer({ song, imgSrc, auto }) {
     setCurrenttime(progressBar.current.value);
   };
 
-  const changeSongLove = () => {
-    setLove(!isLove);
+  const next = () => {
+    setNumber(number + 1);
+    forwardSong();
+    console.log(number);
+  };
+
+  const forwardSong = () => {
+    {
+      allSongs &&
+        allSongs.map((song, index) => {
+          if (song.id === number) {
+            setNextSong(song.song);
+          }
+        });
+    }
+    console.log(nextSong);
+    changePlayPause();
   };
 
   return (
@@ -74,7 +92,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
         <img src={imgSrc} alt="" />
       </div>
       <div className="songAttributes">
-        <audio src={song} preload="metadata" ref={audioPlayer} />
+        <audio src={nextSong} preload="metadata" ref={audioPlayer} />
 
         <div className="top">
           <div className="middle flex">
@@ -97,7 +115,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
                 </i>
               )}
             </div>
-            <div className="forward ml-[.8vw] -mt-[1vh]">
+            <div className="forward ml-[.8vw] -mt-[1vh]" onClick={next}>
               <i>
                 <FaStepForward />
               </i>
