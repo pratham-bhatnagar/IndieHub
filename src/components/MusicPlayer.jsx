@@ -86,7 +86,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
       setMainSong(
         allSongs[number].song,
         allSongs[number].imgSrc,
-        allSongs[number].songName.substring(0, 8),
+        allSongs[number].songName.substring(0, 6),
         allSongs[number].artist.substring(0, 10)
       );
       // allSongs &&

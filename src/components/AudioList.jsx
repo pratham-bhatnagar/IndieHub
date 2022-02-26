@@ -6,7 +6,7 @@ import { Songs } from "./Songs";
 
 export default function AudioList() {
   const [songs, setSongs] = useState(Songs);
-  const [song, setSong] = useState(songs[0].song);
+  const [nextsong, setNextSong] = useState(songs[0].song);
   const [img, setImage] = useState(songs[0].imgSrc);
   const [auto, setAuto] = useState(false);
 
@@ -31,7 +31,7 @@ export default function AudioList() {
   };
 
   const setMainSong = (songSrc, imgSrc) => {
-    setSong(songSrc);
+    setNextSong(songSrc);
     setImage(imgSrc);
     setAuto(true);
   };
@@ -98,7 +98,7 @@ export default function AudioList() {
           ))}
       </div>
 
-      <MusicPlayer song={song} imgSrc={img} autoplay={auto} />
+      <MusicPlayer song={nextsong} imgSrc={img} autoplay={auto} />
     </div>
   );
 }
