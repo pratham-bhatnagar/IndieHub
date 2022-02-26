@@ -1,35 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaHeadphones, FaRegClock, FaRegHeart, FaHeart } from "react-icons/fa";
 import "./LeftMenu.css";
-import MusicPlayer from "./MusicPlayer";
 import { Songs } from "./Songs";
+import MusicPlayer from "./MusicPlayer";
 
 export default function AudioList() {
   const [songs, setSongs] = useState(Songs);
   const [nextsong, setNextSong] = useState(songs[0].song);
   const [img, setImage] = useState(songs[0].imgSrc);
   const [auto, setAuto] = useState(false);
-
-  useEffect(() => {
-    const allSongs = document.querySelectorAll(".songs");
-    function changeActive() {
-      allSongs.forEach((n) => n.classList.remove("active"));
-      this.classList.add("active");
-    }
-
-    allSongs.forEach((n) => n.addEventListener("click", changeActive));
-  }, []);
-
-  const changeFavourite = (id) => {
-    Songs.forEach((song) => {
-      if (song.id == id) {
-        song.favourite = !song.favourite;
-      }
-    });
-
-    setSongs([...songs]);
-  };
-
   const setMainSong = (songSrc, imgSrc) => {
     setNextSong(songSrc);
     setImage(imgSrc);
@@ -39,7 +18,7 @@ export default function AudioList() {
   return (
     <div className="AudioList">
       <h2 className="title">
-        The list <span>12 songs</span>
+        The list <span>10 songs</span>
       </h2>
 
       <div className="songsContainer">
@@ -64,41 +43,29 @@ export default function AudioList() {
                   </p>
 
                   <div className="hits">
-                    <p className="hit">
-                      <i>
-                        <FaHeadphones />
-                      </i>
-                      95,490,102
-                    </p>
-
                     <p className="duration">
                       <i>
                         <FaRegClock />
                       </i>
-                      03:04
+                      02:34
                     </p>
-                    <div
-                      className="favourite"
-                      onClick={() => changeFavourite(song?.id)}
-                    >
-                      {song?.favourite ? (
-                        <i>
-                          <FaHeart />
-                        </i>
-                      ) : (
-                        <i>
-                          <FaRegHeart />
-                        </i>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
       </div>
-
       <MusicPlayer song={nextsong} imgSrc={img} autoplay={auto} />
     </div>
   );
 }
+
+// useEffect(() => {
+//   const allSongs = document.querySelectorAll(".songs");
+//   function changeActive() {
+//     allSongs.forEach((n) => n.classList.remove("active"));
+//     this.classList.add("active");
+//   }
+
+//   allSongs.forEach((n) => n.addEventListener("click", changeActive));
+// }, []);
