@@ -1,18 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
-import {
-  FaForward,
-  FaStepForward,
-  FaStepBackward,
-  FaBackward,
-  FaPlay,
-  FaPause,
-  FaShareAlt,
-} from "react-icons/fa";
-import { BsDownload } from "react-icons/bs";
+import { BsFillVolumeUpFill } from "react-icons/bs";
+import { FaStepForward, FaStepBackward, FaPlay, FaPause } from "react-icons/fa";
+import { Songs } from "./Songs";
 
-export default function MusicPlayer({ song, imgSrc, auto }) {
-  const [isLove, setLove] = useState(false);
+function MusicPlayer({ song, imgSrc, auto }) {
+  const [number, setNumber] = useState(1);
+  const [allSongs, setAllSongs] = useState(Songs);
+  const [nextSong, setNextSong] = useState(allSongs[0].song);
   const [isPlaying, setPlay] = useState(false);
   //   duration state
   const [duration, setDuration] = useState(0);
@@ -21,7 +16,9 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
   const audioPlayer = useRef(); //   reference to our audio component
   const progressBar = useRef(); //   reference to our prgressbar
   const animationRef = useRef(); //  reference to our animation
-
+  const [image, setImage] = useState(allSongs[0].imgSrc);
+  const [songName, setSongName] = useState(allSongs[0].songName);
+  const [artist, setArtist] = useState(allSongs[0].artist);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -60,14 +57,6 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
 
   const changeProgress = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
-
-    // progressBar.current.style.setProperty(
-    //   "--played-width",
-    //   `${(progressBar.current.value / duration) * 100}%`
-    // );
-
-    // setCurrenttime(progressBar.current.value);
-
     changeCurrentTime();
   };
 
@@ -80,46 +69,73 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
     setCurrenttime(progressBar.current.value);
   };
 
-  const changeSongLove = () => {
-    setLove(!isLove);
+  const previous = () => {
+    if (number <= 10 && number > 1) setNumber(number - 1);
+    forwardSong();
+    console.log(number);
+  };
+
+  const next = () => {
+    if (number < 10 && number >= 1) setNumber(number + 1);
+    forwardSong();
+    console.log(number);
+  };
+
+  const forwardSong = () => {
+    {
+      setMainSong(
+        allSongs[number].song,
+        allSongs[number].imgSrc,
+        allSongs[number].songName.substring(0, 6),
+        allSongs[number].artist.substring(0, 10)
+      );
+      // allSongs &&
+      //   allSongs.map((song, index) => {
+      //     if (song.id === number) {
+      //       setNextSong(song.song);
+      //     }
+      //   });
+    }
+    console.log(nextSong);
+    changePlayPause();
+  };
+
+  const setMainSong = (songSrc, imgSrc, songNameSrc, artistSrc) => {
+    setNextSong(songSrc);
+    setImage(imgSrc);
+    setSongName(songNameSrc);
+    setArtist(artistSrc);
   };
 
   return (
     <div className="musicPlayer">
-      <div className="songImage">
-        <img src="/songImage.svg" alt="" />
+      <div className="flex w-[200px] text-white">
+        <div className="songImage">
+          <img src={image} alt="" />
+        </div>
+        <div className="grid grid-cols-1 grid-rows-2">
+          <p className="pl-[1vh] text-2xl pb-0 mb-0">{songName}</p>
+          <p className="pl-[1vh]">{artist}</p>
+        </div>
       </div>
+
       <div className="songAttributes">
-        <audio src="/samplesong.mp3" preload="metadata" ref={audioPlayer} />
+        <audio src={nextSong} preload="metadata" ref={audioPlayer} />
 
-        <div className="top">
-          <div className="left">
-            {/* <div className="loved" onClick={changeSongLove}>
-              {isLove ? (
-                <i>
-                  <FaRegHeart />
-                </i>
-              ) : (
-                <i>
-                  <FaHeart />
-                </i>
-              )}
-            </div> */}
-            {/* <i className="download">
-              <BsDownload />
-            </i> */}
-          </div>
-
-          <div className="middle">
-            <div className="back">
+        <div className="top mr-[10vw]">
+          <div className="middle flex ">
+            <div
+              className="back -ml-[2vw] mr-[.2vw] -mt-[1vh]"
+              onClick={previous}
+            >
               <i>
                 <FaStepBackward />
               </i>
-              {/* <i>
-                <FaBackward />
-              </i> */}
             </div>
-            <div className="playPause" onClick={changePlayPause}>
+            <div
+              className="playPause mt-[2vh] mb-[0vh]"
+              onClick={changePlayPause}
+            >
               {isPlaying ? (
                 <i>
                   <FaPause />
@@ -130,40 +146,41 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
                 </i>
               )}
             </div>
-            <div className="forward">
-              {/* <i>
-                <FaForward />
-              </i> */}
+            <div className="forward ml-[.8vw] -mt-[1vh]" onClick={next}>
               <i>
                 <FaStepForward />
               </i>
             </div>
           </div>
-
-          <div className="right">
-            {/* <i>
-              <FaShareAlt />
-            </i> */}
-          </div>
         </div>
+        <div className="w-full -mt-[2vh] overflow-y-hidden">
+          <div className="bottom flex justify-center w-full">
+            <div className="currentTime pl-[5vw]">
+              {calculateTime(currentTime)}
+            </div>
+            <input
+              type="range"
+              className="progressBar "
+              ref={progressBar}
+              defaultValue="0"
+              onChange={changeProgress}
+              autoPlay={auto}
+            />
+            <div className="duration ">
+              {duration && !isNaN(duration) && calculateTime(duration)
+                ? duration && !isNaN(duration) && calculateTime(duration)
+                : "00:00"}
+            </div>
 
-        <div className="bottom">
-          <div className="currentTime">{calculateTime(currentTime)}</div>
-          <input
-            type="range"
-            className="progressBar"
-            ref={progressBar}
-            defaultValue="0"
-            onChange={changeProgress}
-            autoPlay={auto}
-          />
-          <div className="duration">
-            {duration && !isNaN(duration) && calculateTime(duration)
-              ? duration && !isNaN(duration) && calculateTime(duration)
-              : "00:00"}
+            <i className="pl-[6vw]">
+              <BsFillVolumeUpFill className="" />
+            </i>
+            <input type="range" />
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+export default MusicPlayer;

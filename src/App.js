@@ -8,6 +8,7 @@ import MusicPlayer from "./components/MusicPlayer";
 import ScrollAnimation from "react-animate-on-scroll";
 import Navbar from "./components/Navbar";
 import MainContainer from "./components/MainContainer";
+import SingleMusicPlayer from "./components/SingleMusicPlayer";
 
 // import ReactJkMusicPlayer from 'react-jinke-music-player'
 // import 'react-jinke-music-player/assets/index.css'
@@ -24,8 +25,8 @@ function App() {
         <AboutUS />
         <TopPlaylists />
         <Faq />
-        <div className="absolute bottom-0 w-[100vw] js-show-on-scroll">
-          <MusicPlayer />
+        <div className="absolute bg-[#ffffff41]  bottom-0 w-[100vw] js-show-on-scroll h-[13vh] overflow-y-hidden">
+          <SingleMusicPlayer />
         </div>
         {/* <ReactJkMusicPlayer glassBg={true} showDownload={false} showThemeSwitch={false} defaultPlayMode="order"  /> */}
       </div>
