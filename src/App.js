@@ -4,12 +4,9 @@ import AboutUS from "./components/AboutUs";
 import TopPlaylists from "./components/TopPlaylists";
 import Faq from "./components/Faq";
 import React from "react";
-import MusicPlayer from "./components/MusicPlayer";
-import ScrollAnimation from "react-animate-on-scroll";
 import Navbar from "./components/Navbar";
 import MainContainer from "./components/MainContainer";
 import SingleMusicPlayer from "./components/SingleMusicPlayer";
-import TrackMusicPlayer from "./components/TrackMusicPlayer";
 
 // import ReactJkMusicPlayer from 'react-jinke-music-player'
 // import 'react-jinke-music-player/assets/index.css'
@@ -22,7 +19,7 @@ function App() {
       </div>
       <div className="">
         <Hero />
-        <MainContainer />
+        {/* <MainContainer /> */}
         <AboutUS />
         <TopPlaylists />
         <Faq />
@@ -31,7 +28,6 @@ function App() {
         </div>
         <br />
         <br />
-
         {/* <ReactJkMusicPlayer glassBg={true} showDownload={false} showThemeSwitch={false} defaultPlayMode="order"  /> */}
       </div>
     </div>

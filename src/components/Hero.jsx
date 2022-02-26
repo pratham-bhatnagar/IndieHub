@@ -1,4 +1,5 @@
 import Fade from "react-reveal/Fade";
+import TextLoop from "react-text-loop";
 export default function Hero() {
   return (
     <div className="relative z-0">
@@ -36,7 +37,15 @@ export default function Hero() {
               <img src="/Stats.svg" className="mt-[6vh]" />
             </div>
           </Fade>
-          <div></div>
+          <Fade>
+            <div className="pl-[15vh] pt-[5vh] h-full w-full">
+              <TextLoop>
+                <img src="/pic 1.svg" />
+                <img src="/pic 2.svg" />
+                <img src="/pic 3.svg" />
+              </TextLoop>
+            </div>
+          </Fade>
         </div>
       </div>
     </div>
