@@ -189,6 +189,10 @@
   }
 }
 
+.musicPlayer .bottom i {
+  color: white;
+}
+
 .musicPlayer .bottom i:hover {
   color: #f1f1f1;
   transition: 0.3s;

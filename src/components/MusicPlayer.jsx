@@ -1,17 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
 import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
-import {
-  FaRegHeart,
-  FaHeart,
-  FaForward,
-  FaStepForward,
-  FaStepBackward,
-  FaBackward,
-  FaPlay,
-  FaPause,
-  FaShareAlt,
-} from "react-icons/fa";
+import { FaStepForward, FaStepBackward, FaPlay, FaPause } from "react-icons/fa";
 import { BsDownload } from "react-icons/bs";
 
 function MusicPlayer({ song, imgSrc, auto }) {
@@ -63,14 +53,6 @@ function MusicPlayer({ song, imgSrc, auto }) {
 
   const changeProgress = () => {
     audioPlayer.current.currentTime = progressBar.current.value;
-
-    // progressBar.current.style.setProperty(
-    //   "--played-width",
-    //   `${(progressBar.current.value / duration) * 100}%`
-    // );
-
-    // setCurrenttime(progressBar.current.value);
-
     changeCurrentTime();
   };
 
@@ -143,7 +125,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
             </div>
 
             <i className="pl-[6vw]">
-              <BsFillVolumeUpFill />
+              <BsFillVolumeUpFill className="" />
             </i>
             <input type="range" />
           </div>
