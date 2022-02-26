@@ -20,11 +20,11 @@ function App() {
       </div>
       <div className="">
         <Hero />
-        {/* <MainContainer /> */}
+        <MainContainer />
         <AboutUS />
         <TopPlaylists />
         <Faq />
-        <div className="absolute bottom-0 w-[100vw] js-show-on-scroll">
+        <div className="absolute bg-[#ffffff41]  bottom-0 w-[100vw] js-show-on-scroll h-[13vh] overflow-y-hidden">
           <MusicPlayer />
         </div>
         {/* <ReactJkMusicPlayer glassBg={true} showDownload={false} showThemeSwitch={false} defaultPlayMode="order"  /> */}

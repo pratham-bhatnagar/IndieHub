@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
+import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
 import {
+  FaRegHeart,
+  FaHeart,
   FaForward,
   FaStepForward,
   FaStepBackward,
@@ -11,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { BsDownload } from "react-icons/bs";
 
-export default function MusicPlayer({ song, imgSrc, auto }) {
+function MusicPlayer({ song, imgSrc, auto }) {
   const [isLove, setLove] = useState(false);
   const [isPlaying, setPlay] = useState(false);
   //   duration state
@@ -87,39 +90,22 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
   return (
     <div className="musicPlayer">
       <div className="songImage">
-        <img src="/songImage.svg" alt="" />
+        <img src={imgSrc} alt="" />
       </div>
       <div className="songAttributes">
-        <audio src="/samplesong.mp3" preload="metadata" ref={audioPlayer} />
+        <audio src={song} preload="metadata" ref={audioPlayer} />
 
         <div className="top">
-          <div className="left">
-            {/* <div className="loved" onClick={changeSongLove}>
-              {isLove ? (
-                <i>
-                  <FaRegHeart />
-                </i>
-              ) : (
-                <i>
-                  <FaHeart />
-                </i>
-              )}
-            </div> */}
-            {/* <i className="download">
-              <BsDownload />
-            </i> */}
-          </div>
-
-          <div className="middle">
-            <div className="back">
+          <div className="middle flex">
+            <div className="back -ml-[2vw] mr-[.2vw] -mt-[1vh]">
               <i>
                 <FaStepBackward />
               </i>
-              {/* <i>
-                <FaBackward />
-              </i> */}
             </div>
-            <div className="playPause" onClick={changePlayPause}>
+            <div
+              className="playPause mt-[2vh] mb-[0vh]"
+              onClick={changePlayPause}
+            >
               {isPlaying ? (
                 <i>
                   <FaPause />
@@ -130,40 +116,41 @@ export default function MusicPlayer({ song, imgSrc, auto }) {
                 </i>
               )}
             </div>
-            <div className="forward">
-              {/* <i>
-                <FaForward />
-              </i> */}
+            <div className="forward ml-[.8vw] -mt-[1vh]">
               <i>
                 <FaStepForward />
               </i>
             </div>
           </div>
-
-          <div className="right">
-            {/* <i>
-              <FaShareAlt />
-            </i> */}
-          </div>
         </div>
+        <div className="w-full -mt-[2vh] overflow-y-hidden">
+          <div className="bottom flex justify-center w-full">
+            <div className="currentTime pl-[15vw]">
+              {calculateTime(currentTime)}
+            </div>
+            <input
+              type="range"
+              className="progressBar "
+              ref={progressBar}
+              defaultValue="0"
+              onChange={changeProgress}
+              autoPlay={auto}
+            />
+            <div className="duration ">
+              {duration && !isNaN(duration) && calculateTime(duration)
+                ? duration && !isNaN(duration) && calculateTime(duration)
+                : "00:00"}
+            </div>
 
-        <div className="bottom">
-          <div className="currentTime">{calculateTime(currentTime)}</div>
-          <input
-            type="range"
-            className="progressBar"
-            ref={progressBar}
-            defaultValue="0"
-            onChange={changeProgress}
-            autoPlay={auto}
-          />
-          <div className="duration">
-            {duration && !isNaN(duration) && calculateTime(duration)
-              ? duration && !isNaN(duration) && calculateTime(duration)
-              : "00:00"}
+            <i className="pl-[6vw]">
+              <BsFillVolumeUpFill />
+            </i>
+            <input type="range" />
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+export default MusicPlayer;
