@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Parallax from "./parallax";
 export default function UploadSong() {
   return (
     <div className="bg-[#10061E] w-[100%] h-[100vh] ">
@@ -6,7 +7,11 @@ export default function UploadSong() {
         src="Ellipse 2.svg"
         className="w-[100%] h-[100vh] relative z-0 blur-2xl"
       />
+
       <div className="absolute inset-0  z-10">
+        <div className="absolute inset-0 z-0">
+          <Parallax />
+        </div>
         <div>
           <Navbar />
           <div className="w-full mt-[2vh]">
