@@ -7,7 +7,7 @@ import { Songs } from "./Songs";
 function MusicPlayer({ song, imgSrc, auto }) {
   const [number, setNumber] = useState(1);
   const [allSongs, setAllSongs] = useState(Songs);
-  const [nextSong, setNextSong] = useState("");
+  const [nextSong, setNextSong] = useState(allSongs[0].song);
   const [isPlaying, setPlay] = useState(false);
   //   duration state
   const [duration, setDuration] = useState(0);
@@ -16,7 +16,9 @@ function MusicPlayer({ song, imgSrc, auto }) {
   const audioPlayer = useRef(); //   reference to our audio component
   const progressBar = useRef(); //   reference to our prgressbar
   const animationRef = useRef(); //  reference to our animation
-
+  const [image, setImage] = useState(allSongs[0].imgSrc);
+  const [songName, setSongName] = useState(allSongs[0].songName);
+  const [artist, setArtist] = useState(allSongs[0].artist);
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
     setDuration(seconds);
@@ -67,36 +69,65 @@ function MusicPlayer({ song, imgSrc, auto }) {
     setCurrenttime(progressBar.current.value);
   };
 
+  const previous = () => {
+    if (number <= 10 && number > 1) setNumber(number - 1);
+    forwardSong();
+    console.log(number);
+  };
+
   const next = () => {
-    setNumber(number + 1);
+    if (number < 10 && number >= 1) setNumber(number + 1);
     forwardSong();
     console.log(number);
   };
 
   const forwardSong = () => {
     {
-      allSongs &&
-        allSongs.map((song, index) => {
-          if (song.id === number) {
-            setNextSong(song.song);
-          }
-        });
+      setMainSong(
+        allSongs[number].song,
+        allSongs[number].imgSrc,
+        allSongs[number].songName.substring(0, 8),
+        allSongs[number].artist.substring(0, 15)
+      );
+      // allSongs &&
+      //   allSongs.map((song, index) => {
+      //     if (song.id === number) {
+      //       setNextSong(song.song);
+      //     }
+      //   });
     }
     console.log(nextSong);
     changePlayPause();
   };
 
+  const setMainSong = (songSrc, imgSrc, songNameSrc, artistSrc) => {
+    setNextSong(songSrc);
+    setImage(imgSrc);
+    setSongName(songNameSrc);
+    setArtist(artistSrc);
+  };
+
   return (
     <div className="musicPlayer">
-      <div className="songImage">
-        <img src={imgSrc} alt="" />
+      <div className="flex w-[200px] text-white">
+        <div className="songImage">
+          <img src={image} alt="" />
+        </div>
+        <div className="grid grid-cols-1 grid-rows-2">
+          <p className="pl-[1vh] text-2xl pb-0 mb-0">{songName}</p>
+          <p className="pl-[1vh]">{artist}</p>
+        </div>
       </div>
+
       <div className="songAttributes">
         <audio src={nextSong} preload="metadata" ref={audioPlayer} />
 
-        <div className="top">
-          <div className="middle flex">
-            <div className="back -ml-[2vw] mr-[.2vw] -mt-[1vh]">
+        <div className="top mr-[10vw]">
+          <div className="middle flex ">
+            <div
+              className="back -ml-[2vw] mr-[.2vw] -mt-[1vh]"
+              onClick={previous}
+            >
               <i>
                 <FaStepBackward />
               </i>
@@ -124,7 +155,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
         </div>
         <div className="w-full -mt-[2vh] overflow-y-hidden">
           <div className="bottom flex justify-center w-full">
-            <div className="currentTime pl-[15vw]">
+            <div className="currentTime pl-[5vw]">
               {calculateTime(currentTime)}
             </div>
             <input
