@@ -87,7 +87,7 @@ function MusicPlayer({ song, imgSrc, auto }) {
         allSongs[number].song,
         allSongs[number].imgSrc,
         allSongs[number].songName.substring(0, 8),
-        allSongs[number].artist.substring(0, 15)
+        allSongs[number].artist.substring(0, 10)
       );
       // allSongs &&
       //   allSongs.map((song, index) => {
