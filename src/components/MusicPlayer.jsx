@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
-import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
+import { BsFillVolumeUpFill } from "react-icons/bs";
 import { FaStepForward, FaStepBackward, FaPlay, FaPause } from "react-icons/fa";
-import { BsDownload } from "react-icons/bs";
 
 function MusicPlayer({ song, imgSrc, auto }) {
   const [isLove, setLove] = useState(false);
