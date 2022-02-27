@@ -1,5 +1,6 @@
 import Navbar from "./Navbar";
 import Parallax from "./parallax";
+
 export default function SendPayment() {
   return (
     <div className="bg-[#10061E] w-[100%] h-[100vh] ">
