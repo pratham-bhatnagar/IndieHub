@@ -1,7 +1,7 @@
 import Parallax from "./parallax";
 export default function AboutUS() {
   return (
-    <div className="relative z-0">
+    <div className="relative z-0" id="about">
       <div>
         <img src="/Ellipse 2.svg" className="w-[100vw] h-[100vh]" />
       </div>

@@ -9,7 +9,7 @@ export default function UploadSong() {
       />
 
       <div className="absolute inset-0  z-10">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 ml-[15vh]">
           <Parallax />
         </div>
         <div>
@@ -19,7 +19,7 @@ export default function UploadSong() {
               Add Songs
             </p>
           </div>
-          <div className="w-full">
+          <div className="w-full absolute z-30">
             <div className="text-center flex flex-col gap-9 mt-[9vh]">
               <div>
                 <input
