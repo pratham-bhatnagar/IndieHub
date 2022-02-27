@@ -5,14 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UploadSong from "./components/UploadSong";
-import Parallax from "./components/parallax";
+import SendPayment from "./components/EthPayment.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/upload" element={<UploadSong />} />
-      <Route path="/p" element={<Parallax />} />
+      <Route path="/sendEth" element={<SendPayment />} />
     </Routes>
   </BrowserRouter>,
 
